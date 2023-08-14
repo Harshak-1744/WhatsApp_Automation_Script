@@ -1,61 +1,59 @@
 # WhatsApp Message Automation Script
 
-## Overview
-
-This Python script automates the process of sending messages to multiple WhatsApp contacts using the WhatsApp Web interface. It utilizes the Selenium library to control a web browser and perform the necessary actions to send messages.
+This Python script automates sending messages with images and captions to multiple WhatsApp contacts or groups using the Selenium WebDriver. The script interacts with the WhatsApp Web interface, allowing you to send messages to your contacts without manual intervention.
 
 ## Prerequisites
 
-Before using the script, make sure you have the following installed:
+- Python 3.x
+- Google Chrome browser
+- ChromeDriver (WebDriver for Chrome)
+- Selenium library (`pip install selenium`)
 
-- Python (version 3.6 or later)
-- Chrome web browser
+## Setup
 
-You also need to install the required Python packages using the following command:
+1. Install Python: Make sure you have Python 3.x installed on your system.
 
-```bash
-pip install selenium webdriver_manager
-```
+2. Install Chrome Browser: If not already installed, download and install the [Google Chrome browser](https://www.google.com/chrome/).
+
+3. Download ChromeDriver: Download the appropriate version of [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) based on your Chrome browser version. Make sure to place the `chromedriver.exe` executable in the same directory as your script.
+
+4. Install Selenium: Install the Selenium library using the following command:
+   ```
+   pip install selenium
+   ```
 
 ## Usage
 
-1. Clone this repository or download the script to your local machine.
+1. Clone or download this repository to your local machine.
 
-2. Create two text files in the same directory as the script:
+2. Prepare your message and phone number lists:
+   - Create a text file named `message.txt` and write your desired message or image caption.
+   - Create a text file named `numbers.txt` and list the phone numbers of the contacts/groups you want to send messages to, each on a new line.
 
-   - `numbers.txt`: List of phone numbers, one per line, without the country code or any special characters.
-   - `message.txt`: The message you want to send. This can be a plain text file.
-
-3. Update the script's configuration section to set the desired time intervals, country code, and file names.
+3. Modify the script:
+   - Replace the `filepath` variable with the path to the image you want to send.
+   - Adjust the `sleep` timing as needed to ensure proper synchronization with the WhatsApp Web interface.
 
 4. Run the script:
+   - Open a terminal in the directory containing the script.
+   - Run the script using the following command:
+     ```
+     python script_name.py
+     ```
+   - Follow the instructions in the terminal to scan the WhatsApp QR code.
 
-   ```bash
-   python script_name.py
-   ```
+5. Script Execution:
+   - The script will loop through each phone number in `numbers.txt`, sending the image with the specified message as a caption.
+   - If a TimeoutException occurs during any step, the script will skip that particular contact and continue with the next one.
+   - The script will print messages indicating the status of message sending for each contact.
 
-   Replace `script_name.py` with the actual name of your script file.
-
-5. The script will open a browser window to the WhatsApp Web interface. You will need to scan the QR code to log in to your WhatsApp account.
-
-6. Once logged in, the script will start sending messages to the phone numbers listed in `numbers.txt`.
-
-## Configuration
-
-You can configure the following parameters in the script:
-
-- `login_time`: Time (in seconds) to allow for logging in to WhatsApp Web.
-- `new_msg_time`: Time (in seconds) to wait for a new message to be created before sending.
-- `send_msg_time`: Time (in seconds) to wait after sending a message.
-- `country_code`: Your country code for phone numbers.
-- `message.txt`: Replace this file's content with the message you want to send.
-
-## Note
-
-- Use this script responsibly and respect WhatsApp's terms of use.
-- This script may require adjustments if WhatsApp Web's layout changes.
-- Internet connectivity is required for the script to work.
+6. Clean Up:
+   - After all messages have been sent, the script will automatically close the WebDriver.
 
 ## Disclaimer
 
-This script is provided for educational purposes only. I am  not responsible for any misuse or violations of terms of service resulting from its usage.
+- This script is for educational and informational purposes only.
+- Use this script responsibly and respect WhatsApp's terms of service.
+- Automated messaging should be used in accordance with legal and ethical guidelines.
+
+Remember to replace `script_name.py` with the actual name of your Python script. Additionally, make sure to abide by WhatsApp's terms of service and applicable laws while using automated messaging tools.
